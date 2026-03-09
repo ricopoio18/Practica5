@@ -64,5 +64,4 @@ public class JugadorTest {
         assertTrue(resultado.contains("Ana"));
         assertTrue(resultado.contains("Mano"));
     }
-
 }
