@@ -1,38 +1,38 @@
-package Practica5;
+package Figuras;
 
-import java.awt.*;
+import java.awt.geom.*;
 
 /**
- * A triangle that can be manipulated and that draws itself on a canvas.
+ * A circle that can be manipulated and that draws itself on a canvas.
  *
  * @author  Michael Kölling and David J. Barnes
  * @version 2016.02.29
  */
 
-public class Triangle
+public class Circle
 {
-    private int height;
-    private int width;
+    private int diameter;
     private int xPosition;
     private int yPosition;
     private String color;
     private boolean isVisible;
 
     /**
-     * Create a new triangle at default position with default color.
+     * Create a new circle at default position with default color.
      */
-    public Triangle()
+    public Circle()
     {
-        height = 60;
-        width = 70;
-        xPosition = 210;
-        yPosition = 140;
-        color = "green";
-        isVisible = false;
+        diameter = 68;
+        xPosition = 230;
+        yPosition = 90;
+        color = "blue";
     }
-
+    public void moveTo(int x, int y){
+        xPosition = x;
+        yPosition = y;
+    }
     /**
-     * Make this triangle visible. If it was already visible, do nothing.
+     * Make this circle visible. If it was already visible, do nothing.
      */
     public void makeVisible()
     {
@@ -41,7 +41,7 @@ public class Triangle
     }
 
     /**
-     * Make this triangle invisible. If it was already invisible, do nothing.
+     * Make this circle invisible. If it was already invisible, do nothing.
      */
     public void makeInvisible()
     {
@@ -50,7 +50,7 @@ public class Triangle
     }
 
     /**
-     * Move the triangle a few pixels to the right.
+     * Move the circle a few pixels to the right.
      */
     public void moveRight()
     {
@@ -58,7 +58,7 @@ public class Triangle
     }
 
     /**
-     * Move the triangle a few pixels to the left.
+     * Move the circle a few pixels to the left.
      */
     public void moveLeft()
     {
@@ -66,7 +66,7 @@ public class Triangle
     }
 
     /**
-     * Move the triangle a few pixels up.
+     * Move the circle a few pixels up.
      */
     public void moveUp()
     {
@@ -74,7 +74,7 @@ public class Triangle
     }
 
     /**
-     * Move the triangle a few pixels down.
+     * Move the circle a few pixels down.
      */
     public void moveDown()
     {
@@ -82,7 +82,7 @@ public class Triangle
     }
 
     /**
-     * Move the triangle horizontally by 'distance' pixels.
+     * Move the circle horizontally by 'distance' pixels.
      */
     public void moveHorizontal(int distance)
     {
@@ -92,7 +92,7 @@ public class Triangle
     }
 
     /**
-     * Move the triangle vertically by 'distance' pixels.
+     * Move the circle vertically by 'distance' pixels.
      */
     public void moveVertical(int distance)
     {
@@ -102,7 +102,7 @@ public class Triangle
     }
 
     /**
-     * Slowly move the triangle horizontally by 'distance' pixels.
+     * Slowly move the circle horizontally by 'distance' pixels.
      */
     public void slowMoveHorizontal(int distance)
     {
@@ -126,7 +126,7 @@ public class Triangle
     }
 
     /**
-     * Slowly move the triangle vertically by 'distance' pixels.
+     * Slowly move the circle vertically by 'distance' pixels.
      */
     public void slowMoveVertical(int distance)
     {
@@ -152,11 +152,10 @@ public class Triangle
     /**
      * Change the size to the new size (in pixels). Size must be >= 0.
      */
-    public void changeSize(int newHeight, int newWidth)
+    public void changeSize(int newDiameter)
     {
         erase();
-        height = newHeight;
-        width = newWidth;
+        diameter = newDiameter;
         draw();
     }
 
@@ -171,26 +170,25 @@ public class Triangle
     }
 
     /**
-     * Draw the triangle with current specifications on screen.
+     * Draw the circle with current specifications on screen.
      */
     private void draw()
     {
         if(isVisible) {
-            Canvas canvas = Canvas.getCanvas();
-            int[] xpoints = { xPosition, xPosition + (width/2), xPosition - (width/2) };
-            int[] ypoints = { yPosition, yPosition + height, yPosition + height };
-            canvas.draw(this, color, new Polygon(xpoints, ypoints, 3));
+            Figuras.Canvas canvas = Figuras.Canvas.getCanvas();
+            canvas.draw(this, color, new Ellipse2D.Double(xPosition, yPosition,
+                    diameter, diameter));
             canvas.wait(10);
         }
     }
 
     /**
-     * Erase the triangle on screen.
+     * Erase the circle on screen.
      */
     private void erase()
     {
         if(isVisible) {
-            Canvas canvas = Canvas.getCanvas();
+            Figuras.Canvas canvas = Canvas.getCanvas();
             canvas.erase(this);
         }
     }

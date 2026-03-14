@@ -1,15 +1,15 @@
-package Practica5;
+package Figuras;
 
 import java.awt.*;
 
 /**
- * A person that can be manipulated and that draws itself on a canvas.
+ * A triangle that can be manipulated and that draws itself on a canvas.
  *
  * @author  Michael Kölling and David J. Barnes
  * @version 2016.02.29
  */
 
-public class Person
+public class Triangle
 {
     private int height;
     private int width;
@@ -19,20 +19,30 @@ public class Person
     private boolean isVisible;
 
     /**
-     * Create a new person at default position with default color.
+     * Create a new triangle at default position with default color.
      */
-    public Person()
+    public Triangle()
     {
         height = 60;
-        width = 30;
-        xPosition = 280;
-        yPosition = 190;
-        color = "black";
+        width = 70;
+        xPosition = 210;
+        yPosition = 140;
+        color = "green";
         isVisible = false;
     }
+    public void moveTo(int x, int y){
+        xPosition = x;
+        yPosition = y;
+    }
 
+    public int getXPosition(){
+        return xPosition;
+    }
+    public int getYPosition(){
+        return yPosition;
+    }
     /**
-     * Make this person visible. If it was already visible, do nothing.
+     * Make this triangle visible. If it was already visible, do nothing.
      */
     public void makeVisible()
     {
@@ -41,7 +51,7 @@ public class Person
     }
 
     /**
-     * Make this person invisible. If it was already invisible, do nothing.
+     * Make this triangle invisible. If it was already invisible, do nothing.
      */
     public void makeInvisible()
     {
@@ -50,7 +60,7 @@ public class Person
     }
 
     /**
-     * Move the person a few pixels to the right.
+     * Move the triangle a few pixels to the right.
      */
     public void moveRight()
     {
@@ -58,7 +68,7 @@ public class Person
     }
 
     /**
-     * Move the person a few pixels to the left.
+     * Move the triangle a few pixels to the left.
      */
     public void moveLeft()
     {
@@ -66,7 +76,7 @@ public class Person
     }
 
     /**
-     * Move the person a few pixels up.
+     * Move the triangle a few pixels up.
      */
     public void moveUp()
     {
@@ -74,7 +84,7 @@ public class Person
     }
 
     /**
-     * Move the person a few pixels down.
+     * Move the triangle a few pixels down.
      */
     public void moveDown()
     {
@@ -82,7 +92,7 @@ public class Person
     }
 
     /**
-     * Move the person horizontally by 'distance' pixels.
+     * Move the triangle horizontally by 'distance' pixels.
      */
     public void moveHorizontal(int distance)
     {
@@ -92,7 +102,7 @@ public class Person
     }
 
     /**
-     * Move the person vertically by 'distance' pixels.
+     * Move the triangle vertically by 'distance' pixels.
      */
     public void moveVertical(int distance)
     {
@@ -102,7 +112,7 @@ public class Person
     }
 
     /**
-     * Slowly move the person horizontally by 'distance' pixels.
+     * Slowly move the triangle horizontally by 'distance' pixels.
      */
     public void slowMoveHorizontal(int distance)
     {
@@ -126,7 +136,7 @@ public class Person
     }
 
     /**
-     * Slowly move the person vertically by 'distance' pixels.
+     * Slowly move the triangle vertically by 'distance' pixels.
      */
     public void slowMoveVertical(int distance)
     {
@@ -171,37 +181,26 @@ public class Person
     }
 
     /**
-     * Draw the person with current specifications on screen.
+     * Draw the triangle with current specifications on screen.
      */
     private void draw()
     {
-        int bh = (int)(height * 0.7);  // body height
-        int hh = (height - bh) / 2;  // half head height
-        int hw = width / 2;  // half width
-        int x = xPosition;
-        int y = yPosition;
         if(isVisible) {
-            Canvas canvas = Canvas.getCanvas();
-            int[] xpoints = { x-3, x-hw, x-hw, x-(int)(hw*0.2)-1, x-(int)(hw*0.2)-1, x-hw,
-                    x-hw+(int)(hw*0.4)+1, x, x+hw-(int)(hw*0.4)-1, x+hw, x+(int)(hw*0.2)+1,
-                    x+(int)(hw*0.2)+1, x+hw, x+hw, x+3, x+(int)(hw*0.6),
-                    x+(int)(hw*0.6), x+3, x-3, x-(int)(hw*0.6), x-(int)(hw*0.6) };
-            int[] ypoints = { y, y+(int)(bh*0.2), y+(int)(bh*0.4), y+(int)(bh*0.2),
-                    y+(int)(bh*0.5), y+bh, y+bh, y+(int)(bh*0.65), y+bh, y+bh,
-                    y+(int)(bh*0.5), y+(int)(bh*0.2), y+(int)(bh*0.4), y+(int)(bh*0.2),
-                    y, y-hh+3, y-hh-3, y-hh-hh, y-hh-hh, y-hh-3, y-hh+3 };
-            canvas.draw(this, color, new Polygon(xpoints, ypoints, 21));
+            Figuras.Canvas canvas = Figuras.Canvas.getCanvas();
+            int[] xpoints = { xPosition, xPosition + (width/2), xPosition - (width/2) };
+            int[] ypoints = { yPosition, yPosition + height, yPosition + height };
+            canvas.draw(this, color, new Polygon(xpoints, ypoints, 3));
             canvas.wait(10);
         }
     }
 
     /**
-     * Erase the person on screen.
+     * Erase the triangle on screen.
      */
     private void erase()
     {
         if(isVisible) {
-            Canvas canvas = Canvas.getCanvas();
+            Figuras.Canvas canvas = Canvas.getCanvas();
             canvas.erase(this);
         }
     }

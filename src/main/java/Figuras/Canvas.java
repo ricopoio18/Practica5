@@ -1,4 +1,4 @@
-package Practica5;
+package Figuras;
 
 import javax.swing.*;
 import java.awt.*;

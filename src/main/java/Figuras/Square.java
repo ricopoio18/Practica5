@@ -1,4 +1,4 @@
-package Practica5;
+package Figuras;
 
 import java.awt.*;
 
@@ -28,7 +28,10 @@ public class Square
         color = "red";
         isVisible = false;
     }
-
+    public void moveTo(int x, int y){
+        xPosition = x;
+        yPosition = y;
+    }
     /**
      * Make this square visible. If it was already visible, do nothing.
      */
@@ -173,7 +176,7 @@ public class Square
     private void draw()
     {
         if(isVisible) {
-            Canvas canvas = Canvas.getCanvas();
+            Figuras.Canvas canvas = Figuras.Canvas.getCanvas();
             canvas.draw(this, color,
                     new Rectangle(xPosition, yPosition, size, size));
             canvas.wait(10);
@@ -186,7 +189,7 @@ public class Square
     private void erase()
     {
         if(isVisible) {
-            Canvas canvas = Canvas.getCanvas();
+            Figuras.Canvas canvas = Canvas.getCanvas();
             canvas.erase(this);
         }
     }
