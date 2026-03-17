@@ -33,10 +33,14 @@ public class pruebas {
 
 
 
-        Trebol t1 = new Trebol(baseX+35, baseY+40);
-        Trebol t2 = new Trebol(baseX+110, baseY+40);
-        Trebol t3 = new Trebol(baseX+75, baseY+102);
-        Trebol t4 = new Trebol(baseX+35, baseY+165);
-        Trebol t5 = new Trebol(baseX+110, baseY+165);
+        Diamante t4 = new Diamante(baseX+27, baseY+46);
+        Diamante t5 = new Diamante(baseX+102, baseY+46);
+        Diamante t2 = new Diamante(baseX+65,baseY+46);
+        Diamante t1 = new Diamante(baseX+65, baseY+108);
+        Diamante t3 = new Diamante(baseX+65, baseY+171);
+        Diamante t6 = new Diamante(baseX+27, baseY+171);
+        Diamante t7 = new Diamante(baseX+102, baseY+171);
+        Diamante t8 = new Diamante(baseX+27,baseY+108);
+        Diamante t9 = new Diamante(baseX+102, baseY+108);
     }
 }
