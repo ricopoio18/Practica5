@@ -4,6 +4,18 @@ import Figuras.Square;
 import Practica5.*;
 import practica6.palo.*;
 
+/**
+ * La clase Visualizador se encarga de representar gráficamente
+ * una carta en pantalla utilizando figuras geométricas.
+ *
+ * Dibuja la base de la carta (bordes y fondo) y el contenido
+ * correspondiente según el valor y tipo de la carta.
+ *
+ * Soporta valores del 1 al 13, donde:
+ * 1–10 representan cartas numéricas
+ * 11–13 representan J, Q y K (figuras)
+ */
+
 public class Visualizador {
 
     private Carta carta;
@@ -11,6 +23,14 @@ public class Visualizador {
 
     private Square b1, b2, n1, n2;
 
+    /**
+     * Constructor de la clase Visualizador.
+     * Inicializa la carta y su posición, crea la base gráfica
+     * y dibuja automáticamente su contenido.
+     *
+     * @param carta Carta que se desea visualizar
+     * @param posicion Posición donde se dibujará la carta
+     */
     public Visualizador(Carta carta, Posicion posicion){
         this.carta = carta;
         this.posicion = posicion;
@@ -31,7 +51,10 @@ public class Visualizador {
         dibujarBase();
         dibujarContenido();
     }
-
+    /**
+     * Dibuja la base de la carta, incluyendo bordes negros
+     * y fondo blanco.
+     */
     private void dibujarBase(){
         int x = posicion.getXPosition();
         int y = posicion.getYPosition();
@@ -47,7 +70,10 @@ public class Visualizador {
         b2.makeVisible();
 
     }
-
+    /**
+     * Determina qué contenido debe dibujarse según el tipo
+     * y valor de la carta.
+     */
     private void dibujarContenido(){
         int valor = carta.getValor();
 
@@ -69,7 +95,14 @@ public class Visualizador {
                 break;
         }
     }
-
+    /**
+     * Dibuja los símbolos de la carta dependiendo de su valor.
+     * Cada caso posiciona los símbolos en coordenadas específicas
+     * para representar visualmente la carta.
+     *
+     * @param cantidad Número de símbolos a dibujar (1–13)
+     * @param tipo Tipo de símbolo (diamante, corazon, trebol, pica)
+     */
     private void dibujarSimbolos(int cantidad, String tipo){
         int baseX = posicion.getXPosition();
         int baseY = posicion.getYPosition();
@@ -153,10 +186,62 @@ public class Visualizador {
                 crearSimbolo(tipo, baseX + 65, baseY + 76);
                 crearSimbolo(tipo, baseX + 65, baseY + 139);
                 break;
+            case 11:
+                crearSimbolo(tipo, baseX + 65, baseY + 46);
+                crearSimbolo(tipo, baseX + 65, baseY + 108);
+                crearSimbolo(tipo, baseX + 65,baseY + 171);
+                crearSimbolo(tipo, baseX + 65,baseY + 76);
+                crearSimbolo(tipo, baseX + 65,baseY + 141);
+                crearSimbolo(tipo, baseX + 45, baseY + 171);
+                crearSimbolo(tipo, baseX + 25,baseY + 151);
+                crearSimbolo(tipo, baseX + 25,baseY + 121);
+                break;
+            case 12:
+                crearSimbolo(tipo, baseX + 85, baseY + 46);
+                crearSimbolo(tipo, baseX + 65, baseY + 46);
+                crearSimbolo(tipo, baseX + 45,baseY + 46);
+                crearSimbolo(tipo, baseX + 25, baseY + 66);
+                crearSimbolo(tipo, baseX + 25, baseY + 96);
+                crearSimbolo(tipo, baseX + 25,baseY + 126);
+                crearSimbolo(tipo, baseX + 25, baseY + 156);
+                crearSimbolo(tipo, baseX + 45, baseY + 174);
+                crearSimbolo(tipo, baseX + 65,baseY + 174);
+                crearSimbolo(tipo, baseX + 85,baseY + 174);
+                crearSimbolo(tipo, baseX + 105, baseY + 66);
+                crearSimbolo(tipo, baseX + 105, baseY + 96);
+                crearSimbolo(tipo, baseX + 105,baseY + 126);
+                crearSimbolo(tipo, baseX + 105, baseY + 156);
+                crearSimbolo(tipo, baseX + 110, baseY + 190);
+
+
+                break;
+            case 13:
+                crearSimbolo(tipo, baseX + 25, baseY + 36);
+                crearSimbolo(tipo, baseX + 25, baseY + 66);
+                crearSimbolo(tipo, baseX + 25, baseY + 96);
+                crearSimbolo(tipo, baseX + 25,baseY + 126);
+                crearSimbolo(tipo, baseX + 25, baseY + 156);
+                crearSimbolo(tipo, baseX + 25, baseY + 186);
+                crearSimbolo(tipo, baseX + 50, baseY + 96);
+                crearSimbolo(tipo, baseX + 65, baseY + 66);
+                crearSimbolo(tipo, baseX + 80, baseY + 36);
+                crearSimbolo(tipo, baseX + 50, baseY + 126);
+                crearSimbolo(tipo, baseX + 65, baseY + 156);
+                crearSimbolo(tipo, baseX + 80, baseY + 186);
+                break;
+
+
+
         }
 
     }
-
+    /**
+     * Crea un símbolo gráfico del tipo especificado en la posición indicada.
+     *
+     * @param tipo Tipo de símbolo
+     * @param x Coordenada X
+     * @param y Coordenada Y
+     */
     private void crearSimbolo(String tipo, int x, int y){
         switch(tipo){
             case "diamante":

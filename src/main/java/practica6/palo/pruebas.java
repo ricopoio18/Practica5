@@ -4,8 +4,8 @@ import practica6.*;
 
 public class pruebas {
     public static void main(String[] args) {
-        Carta carta = new Carta(10, Carta.Tipo.CORAZON);
-        Posicion posicion = new Posicion(5, 5);
+        Carta carta = new Carta(13, Carta.Tipo.PICA);
+        Posicion posicion = new Posicion(200, 70);
         Visualizador visualizador = new Visualizador(carta, posicion);
 
 
