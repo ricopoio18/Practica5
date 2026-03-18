@@ -58,7 +58,7 @@ public class Diamante {
         triangulo3.makeVisible();
     }
 
-    public void makeInvisble(){
+    public void makeInvisible(){
         triangulo1.makeInvisible();
         triangulo2.makeInvisible();
         triangulo3.makeInvisible();

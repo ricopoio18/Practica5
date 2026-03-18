@@ -58,7 +58,7 @@ public class Pica {
         triangulo2.makeVisible();
     }
 
-    public void makeInvisble(){
+    public void makeInvisible(){
         circulo1.makeInvisible();
         circulo2.makeInvisible();
         triangulo1.makeInvisible();

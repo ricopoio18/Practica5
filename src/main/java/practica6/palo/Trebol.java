@@ -56,7 +56,7 @@ public class Trebol {
         triangulo.makeVisible();
     }
 
-    public void makeInvisble(){
+    public void makeInvisible(){
         circulo1.makeInvisible();
         circulo2.makeInvisible();
         circulo3.makeInvisible();
